@@ -27,6 +27,10 @@
 
 @section('content')
   {{-- Looping over this <div> --}}
+  {{-- <div class="d-flex justify-content-end">
+    {{ $posts->links() }}
+  </div> --}}
+
   @foreach ($posts as $post)
     <div class="post-preview">
       <a href="post.html">
@@ -50,10 +54,16 @@
 
   <div class="d-flex justify-content-end">
     {{ $posts->links() }}
-
   </div>
   {{-- <!-- Pager --> --}}
-  <div class="clearfix">
-    <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-  </div>
+  {{-- {{ gettype($posts->currentPage()) }} --}}
+
+  @if ($posts->currentPage() === 1)
+    <div class="clearfix">
+      <a class="btn btn-primary float-right" href="{{ $posts->nextPageUrl() }}">Newer Posts &rarr;</a>
+    @else
+      <a class="btn btn-primary float-left" href="{{ $posts->previousPageUrl() }}">&larr; Older Posts</a>
+      <a class="btn btn-primary float-right" href="{{ $posts->nextPageUrl() }}">Newer Posts &rarr;</a>
+    </div>
+  @endif
 @endsection
