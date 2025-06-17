@@ -47,6 +47,11 @@
     <hr>
   @endforeach
 
+
+  <div class="d-flex justify-content-end">
+    {{ $posts->links() }}
+
+  </div>
   {{-- <!-- Pager --> --}}
   <div class="clearfix">
     <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
