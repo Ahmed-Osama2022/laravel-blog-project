@@ -38,7 +38,9 @@ class HomeController extends Controller
      */
 
     // $posts = Post::all(); // This for all people ; BUG:
-    $posts = Post::with(['comments', 'user'])->get();
+    // $posts = Post::with(['comments', 'user'])->get(); // OLD without paginate
+    $posts = Post::with(['comments', 'user'])->paginate(10);
+
 
     return view('home', compact('posts'));
   }
