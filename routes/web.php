@@ -40,3 +40,7 @@ Route::middleware(['auth'])->prefix('admins')->group(function () {
 });
 
 Route::resource('/posts', PostController::class);
+
+Route::get('/blogs', function () {
+  return view('partials.home');
+});
