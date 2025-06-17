@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,13 @@ class HomeController extends Controller
    */
   public function __construct()
   {
-    $this->middleware('auth');
+    /**
+     * This will be a home page for all visitors
+     * Guests
+     * Signed users
+     * Beacuse of this => we'll disable the middleware and bring all of the posts
+     */
+    // $this->middleware('auth');
   }
 
   /**
@@ -23,6 +30,16 @@ class HomeController extends Controller
    */
   public function index()
   {
-    return view('home');
+    /**
+     * This will be a home page for all visitors
+     * Guests
+     * Signed users
+     * Beacuse of this => we'll disable the middleware and bring all of the posts
+     */
+
+    // $posts = Post::all(); // This for all people ; BUG:
+    $posts = Post::with(['comments', 'user'])->get();
+
+    return view('home', compact('posts'));
   }
 }
