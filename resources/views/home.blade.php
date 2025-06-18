@@ -61,6 +61,10 @@
   @if ($posts->currentPage() === 1)
     <div class="clearfix">
       <a class="btn btn-primary float-right" href="{{ $posts->nextPageUrl() }}">Newer Posts &rarr;</a>
+      {{-- @elseif (!$posts->hasMorePages()) --}}
+    @elseif ($posts->currentPage() === $posts->lastPage())
+      <h3>You have reached the maximum pages!</h3>
+      <a class="btn btn-primary float-left" href="{{ $posts->previousPageUrl() }}">&larr; Older Posts</a>
     @else
       <a class="btn btn-primary float-left" href="{{ $posts->previousPageUrl() }}">&larr; Older Posts</a>
       <a class="btn btn-primary float-right" href="{{ $posts->nextPageUrl() }}">Newer Posts &rarr;</a>

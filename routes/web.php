@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,4 +44,20 @@ Route::resource('/posts', PostController::class);
 
 Route::get('/blogs', function () {
   return view('partials.home');
+});
+
+Route::get('/delete', function () {
+  // $posts_num = DB::table('posts')->count();
+
+  // $query = DB::table('posts')
+  // ->whereBetween('id', [$posts_num / 2, $posts_num])
+  // ->delete();
+
+  $comments_num = DB::table('comments')->count();
+
+  $query = DB::table('comments')
+    ->whereBetween('id', [$comments_num / 2, $comments_num])
+    ->delete();
+
+  dd($query);
 });
