@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>Clean Blog - Start Bootstrap Theme</title>
 
@@ -41,14 +42,43 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+
+          @if (Auth::check())
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('admin.index') }}">Admin</a>
+            </li>
+            {{-- Failed Method --}}
+            {{-- <li class="nav-item">
+              <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+            </li> --}}
+
+            {{-- 1- Method --}}
+            {{-- <form action="/logout" method="post">
+              @csrf
+              <li class="nav-item">
+                <button class="nav-link" type="submit">
+                  Logout
+                </button>
+              </li>
+            </form> --}}
+
+            {{-- 2- Method --}}
+            <li class="nav-item">
+              <a class="nav-link text-danger" id='logout_btn' href="{{ route('logout') }}">Logout</a>
+            </li>
+            <script src="{{ asset('admin/js/logout.js') }}"></script>
+          @else
+            <li class="nav-item">
+              <a class="nav-link border-info border-bottom" href="{{ route('login') }}">Login</a>
+            </li>
+          @endif
+
+
           <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('home.about') }}">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="post.html">Sample Post</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('home.contact') }}">Contact</a>
