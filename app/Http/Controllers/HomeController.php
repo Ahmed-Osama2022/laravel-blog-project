@@ -41,7 +41,15 @@ class HomeController extends Controller
     // $posts = Post::with(['comments', 'user'])->get(); // OLD without paginate
     $posts = Post::with(['comments', 'user'])->paginate(10);
 
-
     return view('home', compact('posts'));
+  }
+
+  public function getPost($post_id)
+  {
+    // dd($id);
+    $post = Post::find($post_id);
+    // dd($post);
+
+    return view('post', compact('post'));
   }
 }

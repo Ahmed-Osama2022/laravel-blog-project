@@ -23,6 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/post/{post}', [App\Http\Controllers\HomeController::class, 'getPost'])->name('home.post');
 
 
 /**
@@ -46,6 +47,9 @@ Route::get('/blogs', function () {
   return view('partials.home');
 });
 
+/**
+ * For just delete some records from the DB
+ */
 Route::get('/delete', function () {
   // $posts_num = DB::table('posts')->count();
 

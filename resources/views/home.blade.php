@@ -33,7 +33,7 @@
 
   @foreach ($posts as $post)
     <div class="post-preview">
-      <a href="post.html">
+      <a href="{{ route('home.post', ['post' => $post->id]) }}">
         <h3 class="post-title">
           {{ $post->title }}
         </h3>
