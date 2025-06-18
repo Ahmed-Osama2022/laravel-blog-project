@@ -44,12 +44,36 @@ class HomeController extends Controller
     return view('home', compact('posts'));
   }
 
-  public function getPost($post_id)
+  // public function getPost($post_id)
+  // {
+  //   // dd($id);
+  //   $post = Post::find($post_id);
+  //   // dd($post);
+
+  //   return view('post', compact('post'));
+  // }
+
+  /**
+   * NOTE:
+   * Or alternative
+   * Using the '07. Route model binding' Concept;
+   * Laravel has the ability to detect if this is an ID or a model.
+   */
+  public function getPost(Post $post)
   {
-    // dd($id);
-    $post = Post::find($post_id);
-    // dd($post);
+    // $post = Post::find($post);
 
     return view('post', compact('post'));
+  }
+
+  public function about(Request $request)
+  {
+    // $post = Post::find($post);
+    return view('about');
+  }
+
+  public function contact(Request $request)
+  {
+    return view('contact');
   }
 }

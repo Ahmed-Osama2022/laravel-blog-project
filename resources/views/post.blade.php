@@ -16,7 +16,7 @@
       <h1>{{ $post->title ?? 'Not Found' }}</h1>
       <h2 class="subheading">{{ $post->title ?? 'Not Found' }}</h2>
       <span class="meta">Posted by
-        <a href="#">{{ $post->user ?? 'Error' }}</a>
+        <a href="#">{{ $post->user->name ?? 'Error' }}</a>
         on August 24, 2019</span>
     </div>
   @endif

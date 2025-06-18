@@ -22,10 +22,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home/post/{post}', [App\Http\Controllers\HomeController::class, 'getPost'])->name('home.post');
-
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+  ->name('home');
+Route::get('/home/post/{post}', [App\Http\Controllers\HomeController::class, 'getPost'])
+  ->name('home.post');
+Route::get('/home/about', [App\Http\Controllers\HomeController::class, 'about'])
+  ->name('home.about');
+Route::get('/home/contact', [App\Http\Controllers\HomeController::class, 'contact'])
+  ->name('home.contact');
 /**
  * NOTE:
  * Later we will collect all the types for routes for admin
