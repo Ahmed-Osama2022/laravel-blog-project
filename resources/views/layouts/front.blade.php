@@ -89,7 +89,9 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+  {{-- <header class="masthead" style="background-image: url('img/home-bg.jpg')"> --}}
+  {{-- @dd($mastHeadPhoto) --}}
+  <header class="masthead" style="background-image: url({{ $mastHeadPhoto }})">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -97,7 +99,7 @@
           <div class="site-heading">
             <h1>Clean Blog</h1>
             <span class="subheading">A Blog Theme by Start Bootstrap</span>
-            {{ request()->route()->getName() }}
+            We are in {{ request()->route()->getName() }} Page
           </div>
         </div>
       </div>

@@ -9,8 +9,6 @@ function logout() {
         .getAttribute("content"),
     },
   });
-
-  window.location.href = "/home";
 }
 
 logout_btn.addEventListener("click", (e) => {
@@ -18,4 +16,7 @@ logout_btn.addEventListener("click", (e) => {
   console.log("CLICKED!");
 
   logout();
+  // window.location.href = "/home";
+  // reload the current page
+  window.location.reload();
 });
